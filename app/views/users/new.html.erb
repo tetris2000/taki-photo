@@ -1,0 +1,52 @@
+<div class="text-center mb-4">
+  <h1>ユーザー登録</h1>
+</div>
+  
+<div class="row">
+  <div class="col-xl-6 col-lg-8 offset-xl-3 offset-lg-2">
+     
+    <%= form_with(model: @user, local: true) do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
+      <div class="form-group row">
+        <%= f.label :name, "ユーザー名", class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :name, class: "form-control" %>
+          <span class="text-secondary" style="font-size: small;">※最大20文字</span>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :email, 'メールアドレス', class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.email_field :email, class: 'form-control mb-4' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :password, 'パスワード', class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password, class: 'form-control' %>
+          <span class="text-secondary" style="font-size: small;">※半角英数字8文字以上<span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :password_confirmation, 'パスワード（再入力）', class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password_confirmation, class: 'form-control mb-4' %>
+        </div>
+      </div>
+      
+      <!--後ほどJQueryにてチェックボックスによる同意ボタン有効／無効機能を追加する-->
+      <div class="form-check text-center mb-3">
+        <input class="form-check-input" type="checkbox" id="check1a" checked>
+        <label class="form-check-label" for="check1a"><a href="#">利用規約</a>に同意しました</label>
+      </div>
+      
+      <div class="text-center">
+        <%= f.submit 'ユーザー登録', class: 'btn btn-primary btn-lg mr-1' %>
+        <%= link_to "キャンセル", root_url, class: "btn btn-light btn-lg ml-1" %>
+      </div>
+    <% end %>
+  </div>
+</div>

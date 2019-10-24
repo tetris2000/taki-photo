@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "toppages#index"
+  get "register", to: "users#new"
+  resources :users, except: :index
+  get "users/:id/delete", to: "users#delete", as: "delete"
+  get "complete", to: "users#complete"
 end

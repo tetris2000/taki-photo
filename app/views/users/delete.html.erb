@@ -1,0 +1,31 @@
+<div class="text-center text-danger mb-5">
+  <h1>ユーザーアカウントを削除する</h1>
+</div>
+
+<div class="text-center mb-4">
+  <p>次のユーザーアカウントを削除しますか？</p>
+</div>
+
+<div class="row mx-auto card mb-5" style="width: 202px;">
+  <div class="card-img-top mb-1">
+    <%= cl_image_tag(@user.icon_photo, :width=>200, :height=>200, :gravity=>"auto", :crop=>"fill", :alt=>"icon") %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-text text-center"><%= @user.name %></h5>
+  </div>
+</div>
+
+<h5 class="text-center text-warning">警告</h5>
+<div class="text-center mb-5">
+  <p>投稿した全ての写真、記事へのコメント、ユーザー情報は残らず消去されます。<br>
+この操作は二度ともとに戻せません。</p>
+</div>
+
+<div class="text-center text-danger mb-4">
+  <p>本当に削除してしまってよろしいですか？</p>
+</div>
+
+<div class="text-center">
+  <%= link_to '削除', @user, method: :delete, class: 'btn btn-danger btn-lg mr-1' %>
+  <%= link_to "キャンセル", @user, class: "btn btn-success btn-lg ml-1" %>
+</div>

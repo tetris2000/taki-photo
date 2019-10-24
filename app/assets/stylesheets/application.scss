@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+// @import "bootstrap-sprockets";
+
+.field_with_errors {
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
+} 
