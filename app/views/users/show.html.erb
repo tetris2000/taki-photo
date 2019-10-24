@@ -3,7 +3,11 @@
     <%= cl_image_tag(@user.icon_photo, :width=>200, :height=>200, :gravity=>"auto", :crop=>"fill", :alt=>"icon") %>
   </div>
   <div class="media-body">
-    <h2 class="mt-0"><%= @user.name %><%= link_to "ユーザー設定", edit_user_path(@user), class: "btn btn-outline-secondary btn-sm ml-4" %></h2>
+    <h2 class="mt-0"><%= @user.name %>
+      <% if current_user == @user %>
+       <%= link_to "ユーザー設定", edit_user_path(@user), class: "btn btn-outline-secondary btn-sm ml-4" %>
+      <% end %>
+    </h2>
     <p><%= @user.introduction %></p>
   </div>
 </div>

@@ -1,0 +1,31 @@
+<div class="text-center mb-4">
+  <h1>ログイン</h1>
+</div>
+  
+<div class="row">
+  <div class="col-xl-6 col-lg-8 offset-xl-3 offset-lg-2">
+     
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+      
+      <div class="form-group row">
+        <%= f.label :email, 'メールアドレス', class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.email_field :email, class: 'form-control mb-4' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :password, 'パスワード', class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="text-center my-4">
+        <%= f.submit 'ログイン', class: 'btn btn-primary btn-lg mr-1' %>
+        <%= link_to "キャンセル", root_url, class: "btn btn-light btn-lg ml-1" %>
+      </div>
+    <% end %>
+   <p class="text-center" style="font-size: small">アカウントをお持ちでない方は<%= link_to "ユーザー登録", register_path %></p>
+  </div>
+</div>
