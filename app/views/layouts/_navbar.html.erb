@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item"><a href="#" class="nav-link">写真を投稿する</a></li>
+          <li class="nav-item"><%= link_to "写真を投稿する", new_post_path, class: "nav-link" %></li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">

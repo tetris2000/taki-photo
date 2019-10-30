@@ -1,0 +1,59 @@
+<div class="text-center mb-4">
+  <h1>投稿を編集する</h1>
+  <p class="text-danger">※写真自体を変更したい場合は、再度新規投稿を行ってください。</p>
+</div>
+  
+<div class="row">
+  <div class="col-xl-6 col-lg-8 offset-xl-3 offset-lg-2">
+     
+    <%= form_with(model: @post, local: true) do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
+      
+      <div class="form-group row">
+        <%= f.label :title, "写真のタイトル", class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :title, class: "form-control" %>
+          <span class="text-secondary" style="font-size: small;">※最大50文字</span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :explanation, '写真の説明', class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.text_area :explanation, class: 'form-control' %>
+          <span class="text-secondary" style="font-size: small;">※最大255文字</span>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :waterfall, "滝の名称", class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :waterfall, class: "form-control" %>
+          <span class="text-secondary" style="font-size: small;">※最大50文字</span>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :prefecture_id, "撮影場所", class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8">
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "↓都道府県を選択"}, {class: "form-control"} %>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :use_exif, "写真のExif情報", class: "col-sm-4 col-form-label" %>
+        <div class="col-sm-8 pt-2">
+          <%= f.radio_button :use_exif, true %>
+          <%= f.label :use_exif, "使用する", {value: true, style: "display: inline-block;", class: "align-middle"} %>
+          <%= f.radio_button :use_exif, false %>
+          <%= f.label :use_exif, "使用しない", {value: false, style: "display: inline-block;", class: "align-middle"} %>
+        </div>
+      </div>
+          
+      <div class="text-center mb-4">
+        <%= f.submit '編集を保存する', class: 'btn btn-primary btn-lg mr-1' %>
+        <%= link_to "キャンセル", root_path, class: "btn btn-light btn-lg ml-1" %>
+      </div>
+    <% end %>
+  </div>
+</div>

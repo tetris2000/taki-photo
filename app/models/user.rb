@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 255 }
   
   mount_uploader :icon_photo, IconPhotoUploader
+  
+  has_many :posts
 end

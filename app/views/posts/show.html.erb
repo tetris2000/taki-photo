@@ -1,0 +1,105 @@
+<div>
+    <%= cl_image_tag(@post.photo, :width=>1110, :alt=>@post.title, class: "img-fluid") %>
+</div>
+
+<% if current_user == @post.user %>
+  <span><%= link_to "投稿を削除", @mpost, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-outline-danger btn-sm" %></span>
+  <span><%= link_to "投稿編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm" %></span>
+<% end %>
+  
+<div class="text-center mb-4">
+  <h1><%= @post.title %></h1>
+</div>
+
+<div class="text-center mb-4">
+  <p><%= @post.explanation %></p>
+</div>
+
+<div class="row">
+  <table class="col-md-6 table table-bordered text-center">
+    <tbody>
+      <tr>
+        <th class="align-middle">投稿者</th>
+        <td>
+          <%= cl_image_tag(@post.user.icon_photo, :width=>50, :height=>50, :gravity=>"auto", :crop=>"fill", :alt=>"icon") %>
+          <%= link_to @post.user.name, @post.user %>
+        </td>
+      </tr>
+      <tr>
+        <th>投稿日</th>
+        <td><%= @post.created_at %></td>
+      </tr>
+      <tr>
+        <th>滝の名称</th>
+        <td><%= @post.waterfall %></td>
+      </tr>
+      <tr>
+        <th>撮影場所</th>
+        <td><%= @post.prefecture.name %></td>
+      </tr>
+      <tr>
+        <th>撮影日</th>
+        <td>
+          <% if @post.use_exif == false %>
+            -
+          <% else %>
+            <%= @post.taken_at %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>露光時間</th>
+        <td>
+          <% if @post.use_exif == false %>
+            -
+          <% else %>
+            <%= @post.shutter_speed %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>絞り値</th>
+        <td>
+          <% if @post.use_exif == false %>
+            -
+          <% else %>
+            <%= @post.f_number %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>ISO</th>
+          <td>
+          <% if @post.use_exif == false %>
+            -
+          <% else %>
+            <%= @post.iso %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>焦点距離</th>
+        <td>
+          <% if @post.use_exif == false %>
+            -
+          <% else %>
+            <%= @post.focal_length %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>カメラ</th>
+        <td>
+          <% if @post.use_exif == false %>
+            -
+          <% else %>
+            <%= @post.camera %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-md-6">
+    <h4 class="text-center">写真へのコメント</h4>
+  </div>
+</div>

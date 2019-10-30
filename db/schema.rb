@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_083037) do
+ActiveRecord::Schema.define(version: 2019_10_28_131611) do
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.string "photo"
+    t.string "explanation"
+    t.string "waterfall"
+    t.datetime "taken_at"
+    t.string "shutter_speed"
+    t.string "f_number"
+    t.string "iso"
+    t.string "focal_length"
+    t.string "camera"
+    t.boolean "use_exif"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "prefecture_id"
+    t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -22,4 +49,6 @@ ActiveRecord::Schema.define(version: 2019_10_19_083037) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "posts", "prefectures"
+  add_foreign_key "posts", "users"
 end
