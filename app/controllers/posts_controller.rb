@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @post_comment = current_user.post_comments.build if logged_in?
   end
   
   def new

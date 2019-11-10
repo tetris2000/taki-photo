@@ -27,7 +27,7 @@
       </tr>
       <tr>
         <th>投稿日</th>
-        <td><%= @post.created_at %></td>
+        <td><%= @post.created_at.strftime("%Y/%m/%d") %></td>
       </tr>
       <tr>
         <th>滝の名称</th>
@@ -43,7 +43,7 @@
           <% if @post.use_exif == false %>
             -
           <% else %>
-            <%= @post.taken_at %>
+            <%= @post.taken_at.strftime("%Y/%m/%d") %>
           <% end %>
         </td>
       </tr>
@@ -101,5 +101,33 @@
   </table>
   <div class="col-md-6">
     <h4 class="text-center">写真へのコメント</h4>
+    <% @post.post_comments.each do |c| %>
+      <li class="mx-2 my-2 list-unstyled">
+        <div><%= link_to c.user.name, c.user %></div>
+        <div class="ml-2"><%= c.comment %></div>
+        <div class="ml-2" style="font-size: small;">
+          <%= c.created_at.strftime("%Y/%m/%d %H:%M") %>
+          <% if current_user == c.user %>
+            <span><%= link_to "コメント編集", edit_post_comment_path(c), class: "btn btn-outline-secondary btn-sm" %></span>
+            <span><%= link_to "コメントを削除", c, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-outline-danger btn-sm" %></span>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+    <% if logged_in? %>
+      <%= form_with(model: @post_comment, local: true) do |f| %>
+        <div class="form-group row mt-4 mx-2 mb-0">
+          <%= f.hidden_field :post_id, :value => @post.id %>
+          <%= f.label :conmment, "新規コメント", class: "form-label" %>
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div>
+          <span class="text-secondary ml-3" style="font-size: small;">※最大255字</span>
+          <span>
+            <%= f.submit '投稿する', class: 'btn btn-primary btn-sm mt-1 mr-3 float-right' %>
+          </span>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

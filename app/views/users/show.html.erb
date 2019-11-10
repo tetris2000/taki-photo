@@ -1,21 +1,2 @@
-<div class="media mb-2">
-  <div class="mr-2">
-    <%= cl_image_tag(@user.icon_photo, :width=>200, :height=>200, :gravity=>"auto", :crop=>"fill", :alt=>"icon") %>
-  </div>
-  <div class="media-body">
-    <h2 class="mt-0"><%= @user.name %>
-      <% if current_user == @user %>
-       <%= link_to "ユーザー設定", edit_user_path(@user), class: "btn btn-outline-secondary btn-sm ml-4" %>
-      <% end %>
-    </h2>
-    <p><%= @user.introduction %></p>
-  </div>
-</div>
-<div>
-  <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><a href="#" class="nav-link active">投稿一覧</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">フォロー一覧</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">フォロワー一覧</a></li>
-  </ul>
-</div>
+<%= render "users/user_top", user: @user %>
 <%= render "posts/posts", posts: @user.posts %>

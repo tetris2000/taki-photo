@@ -50,6 +50,16 @@ class UsersController < ApplicationController
   def complete
   end
   
+  def followings
+    set_user
+    @followings = @user.followings.page(params[:page])
+  end
+  
+  def followers
+    set_user
+    @followers = @user.followers.page(params[:page])
+  end
+  
   private
   
   def set_user
@@ -57,7 +67,7 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction, :icon_photo)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction, :icon_photo, :terms_of_register)
   end
 end
 

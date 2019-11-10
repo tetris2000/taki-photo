@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :prefecture
+  has_many :post_comments, dependent: :destroy
   
   validates :title, presence: true, length: { maximum: 50 }
   validates :photo, presence: true

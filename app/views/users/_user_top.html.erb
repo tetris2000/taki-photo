@@ -1,0 +1,24 @@
+<div class="media mb-2">
+  <div class="mr-2">
+    <%= cl_image_tag(user.icon_photo, :width=>200, :height=>200, :gravity=>"auto", :crop=>"fill", :alt=>"icon") %>
+  </div>
+  <div class="media-body">
+    <h2 class="mt-0"><%= user.name %>
+      <% if logged_in? %>
+        <% if current_user == user %>
+          <%= link_to "ユーザー設定", edit_user_path(user), class: "btn btn-outline-secondary btn-sm ml-4" %>
+        <% else %>
+          <%= render "relationships/follow_button", user: user %>
+        <% end %>
+      <% end %>
+    </h2>
+    <p><%= user.introduction %></p>
+  </div>
+</div>
+<div>
+  <ul class="nav nav-tabs nav-justified mb-3">
+    <li class="nav-item"><a href="<%= user_path(user) %>" class="nav-link <%= "active" if current_page?(user_path(user)) %>">投稿一覧<span class="badge badge-secondary"><%= @count_posts %></span></a></li>
+    <li class="nav-item"><a href="<%= followings_user_path(user) %>" class="nav-link <%= "active" if current_page?(followings_user_path(user)) %>">フォロー一覧<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+    <li class="nav-item"><a href="<%= followers_user_path(user) %>" class="nav-link <%= "active" if current_page?(followers_user_path(user)) %>">フォロワー一覧<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+  </ul>
+</div>

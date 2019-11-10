@@ -1,0 +1,8 @@
+<p>カテゴリから見つける</p>
+<br>
+<details>
+  <summary>都道府県別</summary>
+    <% prefectures.each do |prf| %>
+      <dt class="font-weight-normal pl-4"><%= link_to "#{prf.name} (#{post_counts(prf)})", prf %></dt>
+    <% end %>
+</details>

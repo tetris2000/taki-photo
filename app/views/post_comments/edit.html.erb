@@ -1,0 +1,18 @@
+<div class="text-center mb-4">
+  <h1>コメント編集（仮ページ）</h1>
+</div>
+
+<%= form_with(model: @post_comment, local: true) do |f| %>
+  <div class="form-group row mx-3 mb-0">
+    <%= f.hidden_field :post_id, :value => @post.id %>
+    <%= f.label :conmment, "コメント", class: "form-label" %>
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  <div>
+    <span class="text-secondary ml-3" style="font-size: small;">※最大255字</span>
+    <span>
+      <%= f.submit '編集する', class: 'btn btn-primary btn-sm mt-1 mr-3' %>
+      <%= link_to "キャンセル", @post, class: "btn btn-light btn-sm mt-1 mr-3" %>
+    </span>
+  </div>
+<% end %>

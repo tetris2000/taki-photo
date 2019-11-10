@@ -37,10 +37,9 @@
         </div>
       </div>
       
-      <!--後ほどJQueryにてチェックボックスによる同意ボタン有効／無効機能を追加する-->
       <div class="form-check text-center mb-3">
-        <input class="form-check-input" type="checkbox" id="check1a" checked>
-        <label class="form-check-label" for="check1a"><a href="#">利用規約</a>に同意しました</label>
+        <%= f.check_box :terms_of_register %>
+        <%= f.label :terms_of_register, "利用規約に同意しました" %>
       </div>
       
       <div class="text-center">
