@@ -39,7 +39,7 @@
       
       <div class="form-check text-center mb-3">
         <%= f.check_box :terms_of_register %>
-        <%= f.label :terms_of_register, "利用規約に同意しました" %>
+        <%= f.label :terms_of_register, "#{link_to("利用規約", detail_path)}に同意しました".html_safe %>
       </div>
       
       <div class="text-center">

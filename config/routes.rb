@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: "toppages#index"
+  get "detail", to: "toppages#detail"
+  
   get "register", to: "users#new"
   resources :users, except: :index do
     member do

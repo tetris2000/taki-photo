@@ -3,4 +3,7 @@ class ToppagesController < ApplicationController
     @posts = Post.all.page(params[:page])
     @prefectures = Prefecture.all
   end
+  
+  def detail
+  end
 end
