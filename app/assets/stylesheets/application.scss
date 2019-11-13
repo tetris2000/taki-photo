@@ -22,3 +22,7 @@
     @extend .is-invalid;
   }
 } 
+
+.hover-img:hover {
+  opacity: 0.7;
+}

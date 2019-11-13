@@ -1,5 +1,5 @@
 <% posts.each do |pst| %>
-  <li class="media m-2">
+  <div class="d-inline-block mb-1 hover-img">
     <%= link_to cl_image_tag(pst.photo, :width=>200, :height=>200, :gravity=>"auto", :crop=>"fill", :alt=>"icon"), pst %>
-  </li>
+  </div>
 <% end %>

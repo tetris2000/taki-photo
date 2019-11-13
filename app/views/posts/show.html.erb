@@ -1,9 +1,9 @@
 <div>
-    <%= cl_image_tag(@post.photo, :width=>1110, :alt=>@post.title, class: "img-fluid") %>
+    <%= cl_image_tag(@post.photo, :width=>1110, :angle=>0, :alt=>@post.title, class: "img-fluid") %>
 </div>
 
 <% if current_user == @post.user %>
-  <span><%= link_to "投稿を削除", @mpost, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-outline-danger btn-sm" %></span>
+  <span><%= link_to "投稿を削除", @post, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-outline-danger btn-sm" %></span>
   <span><%= link_to "投稿編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm" %></span>
 <% end %>
   
@@ -42,8 +42,10 @@
         <td>
           <% if @post.use_exif == false %>
             -
+          <% elsif @post.taken_at == nil %>
+            データなし
           <% else %>
-            <%= @post.taken_at.strftime("%Y/%m/%d") %>
+            <%= @post.taken_at.strftime("%Y/%m/%d %H:%M:%S") %>
           <% end %>
         </td>
       </tr>
@@ -52,8 +54,10 @@
         <td>
           <% if @post.use_exif == false %>
             -
+          <% elsif @post.shutter_speed == nil %>
+            データなし
           <% else %>
-            <%= @post.shutter_speed %>
+            <%= @post.shutter_speed %> s
           <% end %>
         </td>
       </tr>
@@ -62,8 +66,10 @@
         <td>
           <% if @post.use_exif == false %>
             -
+          <% elsif @post.f_number == nil %>
+            データなし
           <% else %>
-            <%= @post.f_number %>
+            <%= @post.f_number.to_f %>
           <% end %>
         </td>
       </tr>
@@ -72,6 +78,8 @@
           <td>
           <% if @post.use_exif == false %>
             -
+          <% elsif @post.iso == nil %>
+            データなし
           <% else %>
             <%= @post.iso %>
           <% end %>
@@ -82,8 +90,10 @@
         <td>
           <% if @post.use_exif == false %>
             -
+          <% elsif @post.focal_length == nil %>
+            データなし
           <% else %>
-            <%= @post.focal_length %>
+            <%= @post.focal_length.to_i %> mm
           <% end %>
         </td>
       </tr>
@@ -92,6 +102,8 @@
         <td>
           <% if @post.use_exif == false %>
             -
+          <% elsif @post.camera == nil %>
+            データなし
           <% else %>
             <%= @post.camera %>
           <% end %>

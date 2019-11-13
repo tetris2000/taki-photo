@@ -1,7 +1,29 @@
 <p>カテゴリから見つける</p>
 <details>
   <summary>都道府県別</summary>
+  <dl>
     <% prefectures.each do |prf| %>
       <dt class="font-weight-normal pl-4"><%= link_to "#{prf.name} (#{post_counts(prf)})", prf %></dt>
     <% end %>
+  </dl>
+</details>
+<br>
+<details>
+  <summary>季節別</summary>
+  <dl>
+    <dt class="font-weight-normal pl-4"><%= link_to "春【3~5月】", root_path %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "夏【6~8月】", root_path %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "秋【9~11月】", root_path %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "春【12~2月】", root_path %></dt>
+  </dl>
+</details>
+<br>
+<details>
+  <summary>露光時間別</summary>
+  <dl>
+    <dt class="font-weight-normal pl-4"><%= link_to "1/5秒以上", root_path %></dt>
+    <dd class="text-secondary" style="font-size: small;">滑らかな滝の流れを見る</dd>
+    <dt class="font-weight-normal pl-4"><%= link_to "1/500秒未満", root_path %></dt>
+    <dd class="text-secondary" style="font-size: small;">静止した滝の水飛沫を見る</dd>
+  </dl>
 </details>

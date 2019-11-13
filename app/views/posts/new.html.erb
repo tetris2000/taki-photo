@@ -11,6 +11,7 @@
       <div class="form-group row mb-4">
         <%= f.label :photo, "写真を選択する", class: "custom-file-label", style: "display: none;" %>
         <%= f.file_field :photo, style: "form-control-file" %>
+        <span class="text-secondary" style="font-size: small;">※JPEGファイルのみアップロード可能</span>
       </div>
       
       <div class="form-group row">
@@ -56,7 +57,7 @@
       
       <div class="text-center mb-4">
         <%= f.submit '投稿する', class: 'btn btn-primary btn-lg mr-1' %>
-        <%= link_to "キャンセル", root_path, class: "btn btn-light btn-lg ml-1" %>
+        <%= link_to "キャンセル", :back, class: "btn btn-light btn-lg ml-1" %>
       </div>
     <% end %>
   </div>

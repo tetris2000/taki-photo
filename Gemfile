@@ -79,3 +79,7 @@ end
 gem 'dotenv-rails'
 
 gem "seed-fu"
+
+gem "exifr"
+
+gem 'pry-rails'
