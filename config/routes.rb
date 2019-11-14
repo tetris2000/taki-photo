@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :likes
     end
   end
   
@@ -17,11 +18,17 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
-  resources :posts, except: :index
+  resources :posts, except: :index do
+    collection do
+      get :search
+    end
+  end
   
   resources :relationships, only: [:create, :destroy] 
   
   resources :post_comments, only: [:create, :edit, :update, :destroy]
   
   resources :prefectures, only: [:show]
+  
+  resources :favorites, only: [:create, :destroy]
 end

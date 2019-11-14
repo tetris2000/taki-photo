@@ -5,6 +5,13 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = current_user.post_comments.build if logged_in?
+    counts(@post.like_users)
+  end
+  
+  def search
+    @prefectures = Prefecture.all
+    @posts = Post.search(params[:search])
+    counts(@posts)
   end
   
   def new
@@ -13,6 +20,7 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
+    
     require "exifr/jpeg"
     @post.taken_at = EXIFR::JPEG.new(@post.photo.file.file).date_time
     @post.shutter_speed = EXIFR::JPEG.new(@post.photo.file.file).exposure_time
@@ -22,7 +30,6 @@ class PostsController < ApplicationController
     @post.camera = EXIFR::JPEG.new(@post.photo.file.file).model
     
     if @post.save
-      binding.pry
       flash[:success] = "写真を投稿しました！"
       redirect_to @post
     else

@@ -60,6 +60,11 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
   end
   
+  def likes
+    set_user
+    @likes = @user.likes.page(params[:page])
+  end
+  
   private
   
   def set_user

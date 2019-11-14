@@ -1,0 +1,11 @@
+<% if current_user.favorite?(pst) %>
+  <%= form_with(model: current_user.favorites.find_by(post_id: pst.id), local: true, method: :delete) do |f| %>
+    <%= hidden_field_tag :post_id, pst.id %>
+    <%= f.submit "★お気に入り済み", class: "btn btn-warning btn-sm text-light" %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+    <%= hidden_field_tag :post_id, pst.id %>
+    <%= f.submit "☆お気に入りに追加", class: "btn btn-outline-warning btn-sm" %>
+  <% end %>
+<% end %>

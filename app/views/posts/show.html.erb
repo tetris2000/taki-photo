@@ -2,10 +2,19 @@
     <%= cl_image_tag(@post.photo, :width=>1110, :angle=>0, :alt=>@post.title, class: "img-fluid") %>
 </div>
 
-<% if current_user == @post.user %>
-  <span><%= link_to "投稿を削除", @post, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-outline-danger btn-sm" %></span>
-  <span><%= link_to "投稿編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm" %></span>
-<% end %>
+<div>
+  <% unless current_user == nil %>
+    <% if current_user == @post.user %>
+      <div class="d-flex justify-content-between">
+        <%= link_to "投稿編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm" %>
+        <%= link_to "投稿を削除", @post, method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: "btn btn-outline-danger btn-sm" %>
+      </div>
+    <% else %>
+      <%= render "favorites/favorite_button", pst: @post %>
+    <% end %>
+  <% end %>
+<span class="text-warning">★</span>×<%= @count_posts%>
+</div>
   
 <div class="text-center mb-4">
   <h1><%= @post.title %></h1>

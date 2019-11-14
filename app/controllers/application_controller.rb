@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
   
   def counts(model)
-    @count_posts = model.posts.count
+    @count_posts = model.count
   end
   # def counts(user)
   #   @count_posts = user.posts.count

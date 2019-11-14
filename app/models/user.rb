@@ -19,11 +19,15 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   
+  has_many :favorites, dependent: :destroy
+  has_many :likes, through: :favorites, source: :post
+  
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
   has_many :reverces_of_relationships, class_name: "Relationship", foreign_key: "follow_id", dependent: :destroy
   has_many :followers, through: :reverces_of_relationships, source: :user
   
+#フォロー関係
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -38,9 +42,18 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+
+#お気に入り関係  
+  def like(pst)
+    self.favorites.find_or_create_by(post_id: pst.id)
+  end
   
-  def dlt_comment(pst)
-    post_comment = self.post_comments.find_or_create_by(post_id: pst.id)
-    post_comment.destroy if post_comment
+  def dislike(pst)
+    favorite = self.favorites.find_by(post_id: pst.id)
+    favorite.destroy if favorite
+  end
+  
+  def favorite?(pst)
+    self.likes.include?(pst)
   end
 end
