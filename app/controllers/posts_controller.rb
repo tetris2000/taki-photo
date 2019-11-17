@@ -20,14 +20,16 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
-    
-    require "exifr/jpeg"
-    @post.taken_at = EXIFR::JPEG.new(@post.photo.file.file).date_time
-    @post.shutter_speed = EXIFR::JPEG.new(@post.photo.file.file).exposure_time
-    @post.f_number = EXIFR::JPEG.new(@post.photo.file.file).f_number
-    @post.iso = EXIFR::JPEG.new(@post.photo.file.file).iso_speed_ratings
-    @post.focal_length = EXIFR::JPEG.new(@post.photo.file.file).focal_length
-    @post.camera = EXIFR::JPEG.new(@post.photo.file.file).model
+    # binding.pry
+    unless @post.id == nil
+      require "exifr/jpeg"
+      @post.taken_at = EXIFR::JPEG.new(@post.photo.file.file).date_time
+      @post.shutter_speed = EXIFR::JPEG.new(@post.photo.file.file).exposure_time
+      @post.f_number = EXIFR::JPEG.new(@post.photo.file.file).f_number
+      @post.iso = EXIFR::JPEG.new(@post.photo.file.file).iso_speed_ratings
+      @post.focal_length = EXIFR::JPEG.new(@post.photo.file.file).focal_length
+      @post.camera = EXIFR::JPEG.new(@post.photo.file.file).model
+    end
     
     if @post.save
       flash[:success] = "写真を投稿しました！"
