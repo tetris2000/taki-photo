@@ -25,10 +25,7 @@ Rails.application.routes.draw do
   end
   
   resources :relationships, only: [:create, :destroy] 
-  
   resources :post_comments, only: [:create, :edit, :update, :destroy]
-  
   resources :prefectures, only: [:show]
-  
   resources :favorites, only: [:create, :destroy]
 end

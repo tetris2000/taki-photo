@@ -15,7 +15,6 @@ class Post < ApplicationRecord
   mount_uploader :photo, PostPhotoUploader
   
   def save_exif
-    binding.pry
     unless self.photo == nil
       require "exifr/jpeg"
       self.taken_at = EXIFR::JPEG.new(self.photo.file.file).date_time
