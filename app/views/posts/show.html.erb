@@ -65,8 +65,12 @@
             -
           <% elsif @post.shutter_speed == nil %>
             データなし
+          <% elsif @post.shutter_speed.to_f <= 0.1  %>
+            <%= @post.shutter_speed.to_r %> s
+          <% elsif @post.shutter_speed.to_f <= 1  %>
+            <%= @post.shutter_speed.to_f %> s
           <% else %>
-            <%= @post.shutter_speed %> s
+            <%= @post.shutter_speed.to_i %> s
           <% end %>
         </td>
       </tr>
@@ -77,6 +81,8 @@
             -
           <% elsif @post.f_number == nil %>
             データなし
+          <% elsif @post.f_number.to_f == @post.f_number.to_i %>
+            <%= @post.f_number.to_i %>
           <% else %>
             <%= @post.f_number.to_f %>
           <% end %>
@@ -90,7 +96,7 @@
           <% elsif @post.iso == nil %>
             データなし
           <% else %>
-            <%= @post.iso %>
+            <%= @post.iso.to_i %>
           <% end %>
         </td>
       </tr>

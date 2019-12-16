@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
   
+  # 投稿の詳細検索画面
+  get "search_for", to: "posts#search_for"
+  
   resources :relationships, only: [:create, :destroy] 
   resources :post_comments, only: [:create, :edit, :update, :destroy]
   resources :prefectures, only: [:show]
