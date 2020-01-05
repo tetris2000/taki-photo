@@ -8,23 +8,99 @@
     <%= form_with(scope: :search_post, url: search_posts_path, method: :get, local: true) do |f| %>
       
       <div class="form-group row">
-        <%= f.label :prefecture_id, "撮影場所", class: "col-sm-4 col-form-label" %>
-        <div class="col-sm-8">
+        <%= f.label :prefecture_id, "撮影場所", class: "col-sm-2 col-form-label text-center" %>
+        <div class="col-sm-10">
           <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "↓都道府県を選択"}, {class: "form-control"} %>
         </div>
       </div>
       
       <div class="form-group row">
-        <%= f.label :waterfall, "滝の名称", class: "col-sm-4 col-form-label" %>
-        <div class="col-sm-8">
+        <%= f.label :waterfall, "滝の名称", class: "col-sm-2 col-form-label text-center" %>
+        <div class="col-sm-10">
           <%= f.text_field :waterfall, class: "form-control" %>
         </div>
       </div>
       
       <div class="form-group row">
-        <%= f.label :shutter_speed, "露光時間", class: "col-sm-4 col-form-label" %>
-        <div class="col-sm-8">
-          <%= f.text_field :shutter_speed_from, class: "form-control" %>s ~ <%= f.text_field :shutter_speed_to, class: "form-control" %>s
+        <%= f.label :taken_at_year, "撮影日", class: "col-sm-2 col-form-label text-center" %>
+        <div class="row col-sm-5">
+          <div class="col-5 pr-1">
+            <%= f.select :taken_at_year_from, [*1995..Date.today.year], {prompt: ""}, {class: "form-control"} %>
+          </div>
+          <span class="col-1 pt-2 px-0">年</span>
+          <div class="col-4 pr-1">
+            <%= f.select :taken_at_month_from, [*1..12], {prompt: ""}, {class: "form-control"} %>
+          </div>
+          <span class="col-1 pt-2 px-0">月</span>
+          <span class="col-1 pt-2 px-0">〜</span>
+        </div>
+        <div class="row col-sm-5">
+          <div class="col-5 pr-1">
+            <%= f.select :taken_at_year_to, [*1995..Date.today.year], {prompt: ""}, {class: "form-control"} %>
+          </div>
+          <span class="col-1 pt-2 px-0">年</span>
+          <div class="col-4 pr-1">
+            <%= f.select :taken_at_month_to, [*1..12], {prompt: ""}, {class: "form-control"} %>
+          </div>
+          <span class="col-2 pt-2 px-0">月</span>
+        </div>
+        <span class="text-secondary offset-sm-4 pl-4" style="font-size: small;">※月のみ入力することで年を無視して検索できます</span>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :shutter_speed, "露光時間", class: "col-sm-2 col-form-label text-center" %>
+        <div class="row col-sm-5">
+          <div class="col-9 pr-1">
+            <%= f.text_field :shutter_speed_from, class: "form-control" %>
+          </div>
+          <span class="col-2 pt-2 px-0">s</span>
+          <span class="col-1 pt-2 px-0">〜</span>
+        </div>
+        <div class="row col-sm-5">
+          <div class="col-9 pr-1">
+            <%= f.text_field :shutter_speed_to, class: "form-control text-center" %>
+          </div>
+          <span class="col-2 pt-2 px-0">s</span>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :f_number, "絞り値", class: "col-sm-2 col-form-label text-center" %>
+        <div class="row col-sm-5">
+          <div class="col-9 pr-1">
+            <%= f.text_field :f_number_from, class: "form-control" %>
+          </div>
+          <span class="col-2 pt-2 px-0"></span>
+          <span class="col-1 pt-2 px-0"> 〜</span>
+        </div>
+        <div class="row col-sm-5">
+          <div class="col-9 pr-1">
+            <%= f.text_field :f_number_to, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :focal_length, "焦点距離", class: "col-sm-2 col-form-label text-center" %>
+        <div class="row col-sm-5">
+          <div class="col-9 pr-1">
+            <%= f.text_field :focal_length_from, class: "form-control" %>
+          </div>
+          <span class="col-2 pt-2 px-0">mm</span>
+          <span class="col-1 pt-2 px-0"> 〜</span>
+        </div>
+        <div class="row col-sm-5">
+          <div class="col-9 pr-1">
+            <%= f.text_field :focal_length_to, class: "form-control" %>
+          </div>
+          <span class="col-2 pt-2 px-0">mm</span>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :camera, "カメラ名", class: "col-sm-2 col-form-label text-center" %>
+        <div class="col-sm-10">
+          <%= f.text_field :camera, class: "form-control" %>
         </div>
       </div>
       

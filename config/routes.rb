@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   resources :posts, except: :index do
     collection do
       get :search
+      get :slow
+      get :fast
+      get :spring
+      get :summer
+      get :autumn
+      get :winter
     end
   end
   

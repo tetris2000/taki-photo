@@ -1,0 +1,13 @@
+<div class="row">
+  <aside class="col-sm-2 pr-0 border-right">
+    <%= render "layouts/category", prefectures: @prefectures %>
+  </aside>
+  <div class="col-sm-10">
+    <h3 class="text-center mb-0">滑らかな滝の写真一覧</h3>
+    <p class="text-center mb-2">露光時間1/5以上</p>
+    <%= render "posts/posts", posts: @posts %>
+    <% if @count_posts == 0 %>
+      <p>投稿が見つかりませんでした</p>
+    <% end %>
+  </div>
+</div>

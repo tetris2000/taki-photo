@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_231200) do
+ActiveRecord::Schema.define(version: 2020_01_03_123516) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -39,15 +39,17 @@ ActiveRecord::Schema.define(version: 2019_11_13_231200) do
     t.string "explanation"
     t.string "waterfall"
     t.datetime "taken_at"
-    t.string "shutter_speed"
-    t.string "f_number"
-    t.string "iso"
-    t.string "focal_length"
+    t.float "shutter_speed"
+    t.float "f_number"
+    t.integer "iso"
+    t.float "focal_length"
     t.string "camera"
     t.boolean "use_exif"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "prefecture_id"
+    t.integer "taken_at_year"
+    t.integer "taken_at_month"
     t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

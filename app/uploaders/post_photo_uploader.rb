@@ -12,4 +12,8 @@ class PostPhotoUploader < CarrierWave::Uploader::Base
   def content_type_whitelist
     /image\//
   end
+  
+  def size_range
+    1..20.megabytes
+  end
 end

@@ -63,10 +63,12 @@
         <td>
           <% if @post.use_exif == false %>
             -
-          <% elsif @post.shutter_speed == nil %>
+          <% elsif @post.shutter_speed == (nil || 0) %>
             データなし
-          <% elsif @post.shutter_speed.to_f <= 0.1  %>
-            <%= @post.shutter_speed.to_r %> s
+          <% elsif @post.shutter_speed.to_f < 0.01  %>
+            <%= @post.shutter_speed.to_s.to_r %> s
+          <% elsif @post.shutter_speed.to_f < 0.5  %>
+            <%= ((@post.shutter_speed*3*13*100).to_i.to_r)/3/13/100 %> s
           <% elsif @post.shutter_speed.to_f <= 1  %>
             <%= @post.shutter_speed.to_f %> s
           <% else %>
@@ -79,24 +81,12 @@
         <td>
           <% if @post.use_exif == false %>
             -
-          <% elsif @post.f_number == nil %>
+          <% elsif @post.f_number == (nil || 0) %>
             データなし
           <% elsif @post.f_number.to_f == @post.f_number.to_i %>
-            <%= @post.f_number.to_i %>
+            f / <%= @post.f_number.to_i %>
           <% else %>
-            <%= @post.f_number.to_f %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <th>ISO</th>
-          <td>
-          <% if @post.use_exif == false %>
-            -
-          <% elsif @post.iso == nil %>
-            データなし
-          <% else %>
-            <%= @post.iso.to_i %>
+            f / <%= @post.f_number.to_f %>
           <% end %>
         </td>
       </tr>
@@ -105,10 +95,22 @@
         <td>
           <% if @post.use_exif == false %>
             -
-          <% elsif @post.focal_length == nil %>
+          <% elsif @post.focal_length == (nil || 0) %>
             データなし
           <% else %>
             <%= @post.focal_length.to_i %> mm
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>ISO感度</th>
+          <td>
+          <% if @post.use_exif == false %>
+            -
+          <% elsif @post.iso == (nil || 0) %>
+            データなし
+          <% else %>
+            <%= @post.iso.to_i %>
           <% end %>
         </td>
       </tr>

@@ -1,11 +1,11 @@
-<p>カテゴリから見つける<br>→詳細検索は<%= link_to "こちら", search_for_path %></p>
+<h5>カテゴリ別写真</h6>
+<p class="ml-3">詳細検索は<%= link_to "こちら", search_for_path %></p>
 <details>
   <summary>露光時間別</summary>
   <dl>
-  <h6 class="mt-2" style="color: red;">※工事中</h6>
-    <dt class="font-weight-normal pl-4"><%= link_to "1/5秒以上", "#" %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "1/5秒以上", slow_posts_path %></dt>
     <dd class="text-secondary" style="font-size: small;">滑らかな滝の流れを見る</dd>
-    <dt class="font-weight-normal pl-4"><%= link_to "1/500秒未満", "#" %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "1/500秒以下", fast_posts_path %></dt>
     <dd class="text-secondary" style="font-size: small;">静止した滝の水飛沫を見る</dd>
   </dl>
 </details>
@@ -13,11 +13,10 @@
 <details>
   <summary>季節別</summary>
   <dl>
-  <h6 class="mt-2" style="color: red;">※工事中</h6>
-    <dt class="font-weight-normal pl-4"><%= link_to "春【3~5月】", "#" %></dt>
-    <dt class="font-weight-normal pl-4"><%= link_to "夏【6~8月】", "#" %></dt>
-    <dt class="font-weight-normal pl-4"><%= link_to "秋【9~11月】", "#" %></dt>
-    <dt class="font-weight-normal pl-4"><%= link_to "春【12~2月】", "#" %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "春【3~5月】", spring_posts_path %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "夏【6~8月】", summer_posts_path %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "秋【9~11月】", autumn_posts_path %></dt>
+    <dt class="font-weight-normal pl-4"><%= link_to "冬【12~2月】", winter_posts_path %></dt>
   </dl>
 </details>
 <br>

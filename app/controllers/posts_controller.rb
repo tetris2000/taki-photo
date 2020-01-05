@@ -13,11 +13,38 @@ class PostsController < ApplicationController
   
   def search
     @search_params = post_search_params
-    # binding.pry
     @posts = Post.search_post(@search_params)
-    counts(@posts)
-    # 一覧表示の都道府県別投稿数用
-    @prefectures = Prefecture.all
+    search_function
+  end
+  
+  def slow
+    @posts = Post.slow_shutter
+    search_function
+  end
+  
+  def fast
+    @posts = Post.fast_shutter
+    search_function
+  end
+  
+  def spring
+    @posts = Post.spring
+    search_function
+  end
+  
+  def summer
+    @posts = Post.summer
+    search_function
+  end
+  
+  def autumn
+    @posts = Post.autumn
+    search_function
+  end
+  
+  def winter
+    @posts = Post.winter
+    search_function
   end
   
   def new
@@ -27,8 +54,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     
-    #load exif data from post.photo (function defined at post.rb)
-    @post.save_exif
+    # load exif data from post.photo (function defined at post.rb)
+    # @post.photo==nilでは回避できなかった
+    unless @post.photo.file == nil
+      @post.save_exif
+    end
     
     if @post.save
       flash[:success] = "写真を投稿しました！"
@@ -58,6 +88,7 @@ class PostsController < ApplicationController
     redirect_to @post.user
   end
   
+  
   private
   
   def correct_user
@@ -67,12 +98,18 @@ class PostsController < ApplicationController
     end
   end
   
+  def search_function
+    counts(@posts)
+    # 一覧表示の都道府県別投稿数用
+    @prefectures = Prefecture.all
+  end
+  
   def post_params
     params.require(:post).permit(:title, :photo, :explanation, :waterfall, :prefecture_id, :taken_at, :shutter_speed, :f_number, :iso, :focal_length, :camera, :use_exif)
   end
   
   def post_search_params
-    params.fetch(:search_post, {}).permit(:prefecture_id, :waterfall, :shutter_speed_from, :shutter_speed_to, :f_number_from, :f_number_to , :focal_length_from, :focal_length_to, :camera)
+    params.fetch(:search_post, {}).permit(:prefecture_id, :waterfall, :shutter_speed_from, :shutter_speed_to, :f_number_from, :f_number_to , :focal_length_from, :focal_length_to, :camera, :taken_at_month_from, :taken_at_month_to, :taken_at_year_from, :taken_at_year_to)
   end
 
 end
