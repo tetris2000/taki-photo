@@ -3,7 +3,7 @@
     <%= render "layouts/category", prefectures: @prefectures %>
   </aside>
   <div class="col-sm-10">
-    <h3 class="text-center mb-2"><%= @prefecture.name %>の写真一覧（<%= @count_posts %>件）</h3>
+    <h3 class="text-center mb-2"><%= @prefecture.name %>の写真一覧</h3>
     <%= render "posts/posts", posts: @prefecture.posts.all.order(created_at: :desc).page(params[:page]) %>
     <% if @count_posts == 0 %>
       <p>投稿が見つかりませんでした</p>

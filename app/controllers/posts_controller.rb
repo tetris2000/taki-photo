@@ -14,36 +14,43 @@ class PostsController < ApplicationController
   def search
     @search_params = post_search_params
     @posts = Post.search_post(@search_params).order(created_at: :desc).page(params[:page])
+    @post_counts = Post.search_post(@search_params)
     search_function
   end
   
   def slow
     @posts = Post.slow_shutter.order(created_at: :desc).page(params[:page])
+    @post_counts = Post.slow_shutter
     search_function
   end
   
   def fast
     @posts = Post.fast_shutter.order(created_at: :desc).page(params[:page])
+    @post_counts = Post.fast_shutter
     search_function
   end
   
   def spring
     @posts = Post.spring.order(created_at: :desc).page(params[:page])
+    @post_counts = Post.spring
     search_function
   end
   
   def summer
     @posts = Post.summer.order(created_at: :desc).page(params[:page])
+    @post_counts = Post.summer
     search_function
   end
   
   def autumn
     @posts = Post.autumn.order(created_at: :desc).page(params[:page])
+    @post_counts = Post.autumn
     search_function
   end
   
   def winter
     @posts = Post.winter.order(created_at: :desc).page(params[:page])
+    @post_counts = Post.winter
     search_function
   end
   
@@ -99,8 +106,8 @@ class PostsController < ApplicationController
   end
   
   def search_function
-    counts(@posts)
-    # 一覧表示の都道府県別投稿数用
+    counts(@post_counts)
+    # 都道府県一覧表示用
     @prefectures = Prefecture.all
   end
   

@@ -24,7 +24,7 @@
   <summary>都道府県別</summary>
   <dl>
     <% prefectures.each do |prf| %>
-      <dt class="font-weight-normal pl-4"><%= link_to "#{prf.name} (#{post_counts(prf)})", prf %></dt>
+      <dt class="font-weight-normal pl-4"><%= link_to "#{prf.name}", prf %></dt>
     <% end %>
   </dl>
 </details>
