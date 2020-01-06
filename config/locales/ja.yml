@@ -17,6 +17,8 @@ ja:
     prefecture: 撮影場所
     prefecture_id: 撮影場所
     use_exif: 写真のExif情報
+   post_comment:
+    comment: コメント
  errors:
   messages:
    max_size_error: は20MB以下のサイズにしてください

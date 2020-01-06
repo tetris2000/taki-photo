@@ -144,10 +144,12 @@
       </li>
     <% end %>
     <% if logged_in? %>
+      <p class="mt-4 pt-2 border-top">新規コメント</p>
       <%= form_with(model: @post_comment, local: true) do |f| %>
-        <div class="form-group row mt-4 mx-2 mb-0">
+      <%= render "layouts/error_messages", model: f.object %>
+        <div class="form-group row mt-2 mx-2 mb-0">
           <%= f.hidden_field :post_id, :value => @post.id %>
-          <%= f.label :conmment, "新規コメント", class: "form-label" %>
+          <%= f.label :conmment, "新規コメント", class: "form-label d-none" %>
           <%= f.text_area :comment, class: "form-control" %>
         </div>
         <div>
@@ -158,7 +160,7 @@
         </div>
       <% end %>
     <% else %>
-      <div class="text-center" style="font-size: small;">写真にコメントするには、<%= link_to "ログイン", login_path %>してください。</div>
+      <div class="text-center mt-4 pt-2 border-top" style="font-size: small;">写真にコメントするには、<%= link_to "ログイン", login_path %>してください。</div>
     <% end %>
   </div>
 </div>

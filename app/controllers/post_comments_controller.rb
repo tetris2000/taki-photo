@@ -10,8 +10,8 @@ class PostCommentsController < ApplicationController
       flash[:success] = "投稿にコメントしました！"
       redirect_to post_path(@post)
     else
-      flash[:danger] = "コメントに失敗しました。"
-      redirect_to post_path(@post)
+      flash.now[:danger] = "コメントに失敗しました。"
+      render "posts/show"
     end
   end
 

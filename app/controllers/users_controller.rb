@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:edit, :update, :delete, :destroy]
+  before_action :correct_user, only: [:edit, :update, :delete, :destroy]
   
   def show
     set_user
@@ -22,11 +23,9 @@ class UsersController < ApplicationController
   end
   
   def edit
-    set_user
   end
   
   def update
-    set_user
     if @user.update(user_params)
       flash[:success] = "ユーザー設定を変更しました。"
       redirect_to @user
@@ -37,13 +36,10 @@ class UsersController < ApplicationController
   end
   
   def delete
-    set_user
   end
   
   def destroy
-    set_user
     @user.destroy
-    
     redirect_to complete_url
   end
   
@@ -66,6 +62,11 @@ class UsersController < ApplicationController
   end
   
   private
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
+  end
   
   def set_user
     @user = User.find(params[:id])

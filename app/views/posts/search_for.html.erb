@@ -25,22 +25,22 @@
         <%= f.label :taken_at_year, "撮影日", class: "col-sm-2 col-form-label text-center" %>
         <div class="row col-sm-5">
           <div class="col-5 pr-1">
-            <%= f.select :taken_at_year_from, [*1995..Date.today.year], {prompt: ""}, {class: "form-control"} %>
+            <%= f.select :taken_at_year_from, [*1995..Date.today.year], {prompt: ""}, {class: "form-control p-0"} %>
           </div>
           <span class="col-1 pt-2 px-0">年</span>
           <div class="col-4 pr-1">
-            <%= f.select :taken_at_month_from, [*1..12], {prompt: ""}, {class: "form-control"} %>
+            <%= f.select :taken_at_month_from, [*1..12], {prompt: ""}, {class: "form-control p-0"} %>
           </div>
           <span class="col-1 pt-2 px-0">月</span>
           <span class="col-1 pt-2 px-0">〜</span>
         </div>
         <div class="row col-sm-5">
           <div class="col-5 pr-1">
-            <%= f.select :taken_at_year_to, [*1995..Date.today.year], {prompt: ""}, {class: "form-control"} %>
+            <%= f.select :taken_at_year_to, [*1995..Date.today.year], {prompt: ""}, {class: "form-control p-0"} %>
           </div>
           <span class="col-1 pt-2 px-0">年</span>
           <div class="col-4 pr-1">
-            <%= f.select :taken_at_month_to, [*1..12], {prompt: ""}, {class: "form-control"} %>
+            <%= f.select :taken_at_month_to, [*1..12], {prompt: ""}, {class: "form-control p-0"} %>
           </div>
           <span class="col-2 pt-2 px-0">月</span>
         </div>
