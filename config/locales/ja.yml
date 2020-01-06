@@ -20,5 +20,6 @@ ja:
  errors:
   messages:
    max_size_error: は20MB以下のサイズにしてください
+   min_size_error: のサイズが小さすぎます
    extension_whitelist_error: はJPEG形式にしてください
-   content_type_whitelist: を選択してください
+   content_type_whitelist: の内容が不適切です

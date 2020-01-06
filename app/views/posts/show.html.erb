@@ -157,6 +157,8 @@
           </span>
         </div>
       <% end %>
+    <% else %>
+      <div class="text-center" style="font-size: small;">写真にコメントするには、<%= link_to "ログイン", login_path %>してください。</div>
     <% end %>
   </div>
 </div>

@@ -23,7 +23,7 @@
       
       <div class="text-center my-4">
         <%= f.submit 'ログイン', class: 'btn btn-primary btn-lg mr-1' %>
-        <%= link_to "キャンセル", root_url, class: "btn btn-light btn-lg ml-1" %>
+        <%= link_to "キャンセル", :back, class: "btn btn-light btn-lg ml-1" %>
       </div>
     <% end %>
    <p class="text-center" style="font-size: small">アカウントをお持ちでない方は<%= link_to "ユーザー登録", register_path %></p>

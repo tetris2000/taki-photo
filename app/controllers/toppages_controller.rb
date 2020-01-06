@@ -1,6 +1,6 @@
 class ToppagesController < ApplicationController
   def index
-    @posts = Post.all.page(params[:page])
+    @posts = Post.all.order(created_at: :desc).page(params[:page])
     @prefectures = Prefecture.all
   end
   

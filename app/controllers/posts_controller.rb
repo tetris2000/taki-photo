@@ -13,37 +13,37 @@ class PostsController < ApplicationController
   
   def search
     @search_params = post_search_params
-    @posts = Post.search_post(@search_params)
+    @posts = Post.search_post(@search_params).order(created_at: :desc).page(params[:page])
     search_function
   end
   
   def slow
-    @posts = Post.slow_shutter
+    @posts = Post.slow_shutter.order(created_at: :desc).page(params[:page])
     search_function
   end
   
   def fast
-    @posts = Post.fast_shutter
+    @posts = Post.fast_shutter.order(created_at: :desc).page(params[:page])
     search_function
   end
   
   def spring
-    @posts = Post.spring
+    @posts = Post.spring.order(created_at: :desc).page(params[:page])
     search_function
   end
   
   def summer
-    @posts = Post.summer
+    @posts = Post.summer.order(created_at: :desc).page(params[:page])
     search_function
   end
   
   def autumn
-    @posts = Post.autumn
+    @posts = Post.autumn.order(created_at: :desc).page(params[:page])
     search_function
   end
   
   def winter
-    @posts = Post.winter
+    @posts = Post.winter.order(created_at: :desc).page(params[:page])
     search_function
   end
   

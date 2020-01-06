@@ -1,2 +1,2 @@
 <%= render "users/user_top", user: @user %>
-<%= render "posts/posts", posts: @user.posts %>
+<%= render "posts/posts", posts: @user.posts.order(created_at: :desc).page(params[:page]) %>

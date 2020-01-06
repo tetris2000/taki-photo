@@ -18,14 +18,16 @@ class Post < ApplicationRecord
   
   def save_exif
     require "exifr/jpeg"
-    self.taken_at = EXIFR::JPEG.new(self.photo.file.file).date_time
-    self.taken_at_year = EXIFR::JPEG.new(self.photo.file.file).date_time.strftime("%Y").to_i
-    self.taken_at_month = EXIFR::JPEG.new(self.photo.file.file).date_time.strftime("%m").to_i
     self.shutter_speed = EXIFR::JPEG.new(self.photo.file.file).exposure_time.to_f
     self.f_number = EXIFR::JPEG.new(self.photo.file.file).f_number.to_f
     self.iso = EXIFR::JPEG.new(self.photo.file.file).iso_speed_ratings.to_i
     self.focal_length = EXIFR::JPEG.new(self.photo.file.file).focal_length.to_f
     self.camera = EXIFR::JPEG.new(self.photo.file.file).model
+    self.taken_at = EXIFR::JPEG.new(self.photo.file.file).date_time
+    unless self.taken_at.nil?
+      self.taken_at_year = EXIFR::JPEG.new(self.photo.file.file).date_time.strftime("%Y").to_i
+      self.taken_at_month = EXIFR::JPEG.new(self.photo.file.file).date_time.strftime("%m").to_i
+    end
   end
   
   scope :search_post, -> (search_params) do
