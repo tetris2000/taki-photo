@@ -29,3 +29,5 @@
 /config/cloudinary.yml
 # cloudinary's environment variable
 /.env
+
+/public/uploads/tmp/*
