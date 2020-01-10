@@ -1,24 +1,25 @@
-# README
+滝の写真投稿サイト「滝フォト」
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+【概要】
+ユーザーが滝の写真を投稿し共有するサイトです。
+写真のExif情報を自動で読み取り、投稿内容に反映できるのが特徴です。
+投稿へのお気に入りやコメントができる他、Exif情報より露光時間別や季節別、都道府県別などで検索ができます。
 
-Things you may want to cover:
+【実装機能】
+・ユーザーアカウント作成、編集、削除
+・ユーザーログイン、ログアウト
+・ユーザー間のフォロー
+・写真投稿、編集、削除
+・投稿写真からEXIF情報の読み取り、DB保存
+・投稿へのお気に入り、コメント追加
+・ページネーション
+・投稿検索
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+【開発環境】
+プログラミング言語：Ruby
+フレームワーク：Ruby on Rails
+IDE：Cloud9
+バージョン管理：Git、GitHub
+PaaS：Heroku
+データベース：［開発］MySQL、［本番］PostgreSQL
+画像アップロード：CarrierWave、Cloudinary
