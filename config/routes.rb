@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   
   resources :posts, except: :index do
     collection do
+      get :new
       get :search
       get :slow
       get :fast
