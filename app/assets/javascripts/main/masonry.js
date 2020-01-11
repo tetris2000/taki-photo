@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     //Masonryの関数↓
     $posts_list.masonry({      //オプション指定箇所
       itemSelector: '.post_item',  //コンテンツを指定
-      columnWidth: 205,    //カラム幅を設定
+      columnWidth: 155,    //カラム幅を設定
       fitWidth: true,          //コンテンツ数に合わせ親の幅を自動調整
     });
   });
