@@ -15,14 +15,15 @@
           <% elsif @post.photo_cache.present? %>
             <%= image_tag "/uploads/tmp/#{@post.photo_cache}", :width=> "100%" %> 
           <% else %>
-            <button type="button" class="btn btn-info btn-lg btn-block" onClick="$('#preview').click()">
+            <button type="button" class="btn btn-info btn-lg btn-block" onClick="$('#post_preview').click()">
               写真を選択
             </button>
           <% end %>
         </div>
         <div class="text-secondary row justify-content-center" style="font-size: small;">
           ※JPEGファイルのみアップロード可能（最大20MB）<br>※画像の幅は1110px以上を推奨
-        <%= f.file_field :photo, id: "preview", class: "d-none" %>
+        </div>
+        <%= f.file_field :photo, id: "post_preview", class: "d-none" %>
         <%= f.hidden_field :photo_cache %>
       </div>
       

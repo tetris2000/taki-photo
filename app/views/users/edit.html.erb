@@ -8,9 +8,14 @@
     <%= form_with(model: @user, local: true) do |f| %>
     <%= render "layouts/error_messages", model: f.object %>
       
-      <div class="form-group row mb-4">
-        <%= f.label :icon_photo, "アイコン画像をアップロードする", class: "custom-file-label", style: "display: none;" %>
-        <%= f.file_field :icon_photo, style: "form-control-file" %>
+      <div class="text-center mb-4">
+        <div id="img_field">
+          <%= cl_image_tag(@user.icon_photo, :width=>200, :height=>200, :gravity=>"auto", :crop=>"fill", :alt=>"icon") %>
+        </div>
+        <button type="button" class="btn btn-secondary btn-lg d-block mx-auto" onClick="$('#icon_preview').click()">
+          アイコンを選択
+        </button>
+        <%= f.file_field :icon_photo, id: "icon_preview", class: "d-none" %>
       </div>
       
       <div class="form-group row">

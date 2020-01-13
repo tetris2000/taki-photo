@@ -1,7 +1,7 @@
 <div id="posts_list">
   <% posts.each do |pst| %>
     <div class="d-inline-block mb-1 hover-img post_item">
-      <%= link_to cl_image_tag(pst.photo, :width=>150, :crop=>"scale", :alt=>"icon"), pst %>
+      <%= link_to cl_image_tag(pst.photo, :width=>148, :crop=>"scale", :alt=>"icon"), pst %>
     </div>
   <% end %>
 </div>
