@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-    <%= cl_image_tag(@post.photo, :width=>1110, :angle=>0, :alt=>@post.title, class: "img-fluid") %>
+    <%= cl_image_tag(@post.photo, :angle=>0, :width=>1110, :crop=>"fill", :alt=>@post.title, class: "img-fluid") %>
 </div>
 
 <div>
