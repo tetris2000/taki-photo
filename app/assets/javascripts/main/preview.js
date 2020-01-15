@@ -5,6 +5,11 @@ $(document).on("turbolinks:load", function(){
     file = e.target.files[0]
     reader = new FileReader(),
     $preview = $("#img_field");
+    
+    if(file === undefined){
+      $preview.empty();
+      return false;
+    }
  
     reader.onload = (function(file) {
       return function(e) {
@@ -29,9 +34,17 @@ $(document).on("turbolinks:load", function(){
     file = e.target.files[0]
     reader = new FileReader(),
     $preview = $("#img_field");
+    $default = $("#default_field");
+    
+     if(file === undefined){
+      $preview.empty();
+      $default.show();
+      return false;
+    }
  
     reader.onload = (function(file) {
       return function(e) {
+        $default.hide();
         $preview.empty();
         $preview.append($('<img>').attr({
           src: e.target.result,

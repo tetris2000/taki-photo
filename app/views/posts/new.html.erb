@@ -9,21 +9,18 @@
     <%= render "layouts/error_messages", model: f.object %>
       
       <div class="form-group justify-content-center">
+        <% if @post.photo_cache.present? %>
+          <%= image_tag "/uploads/tmp/#{@post.photo_cache}", :width=> "100%" %> 
+        <% end %>
         <div id="img_field">
-          <% if @post.persisted? && @post.photo.present? %>
-            <%#= image_tag(@post.photo.url) %>
-          <% elsif @post.photo_cache.present? %>
-            <%= image_tag "/uploads/tmp/#{@post.photo_cache}", :width=> "100%" %> 
-          <% else %>
-            <button type="button" class="btn btn-info btn-lg btn-block" onClick="$('#post_preview').click()">
-              写真を選択
-            </button>
-          <% end %>
         </div>
+        <button type="button" class="btn btn-info btn-lg btn-block" onClick="$('#post_preview').click()">
+          写真を選択
+        </button>
         <div class="text-secondary row justify-content-center" style="font-size: small;">
           ※JPEGファイルのみアップロード可能（最大20MB）<br>※画像の幅は1110px以上を推奨
         </div>
-        <%= f.file_field :photo, id: "post_preview", class: "d-none" %>
+        <%= f.file_field :photo, accept: "image/jpg,image/jpeg", id: "post_preview", class: "d-none" %>
         <%= f.hidden_field :photo_cache %>
       </div>
       
