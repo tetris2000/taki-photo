@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_163440) do
+ActiveRecord::Schema.define(version: 2020_01_18_113421) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_163440) do
     t.string "icon_photo", default: "image/upload/v1573380465/default.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "favorites", "posts"
