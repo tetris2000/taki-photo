@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
+  
+  def current_ability
+    @current_ability ||= Ability.new(current_admin_user)
+  end 
+  
   private
 
   include SessionsHelper
-
+  
   def require_user_logged_in
     unless logged_in?
       redirect_to root_url
