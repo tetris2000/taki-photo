@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :admin_users
+  # admin_userでもadmin:trueのみrails_adminにアクセス可能
+  # admin:falseのadmin_userでログインしてしまった場合、/admin_user/editからログアウトする
+  # rails_adminへは/adminから直接アクセスする（未ログイン時はログインページが出る）
+  devise_for :admin_users, controllers: {
+        registrations: 'admin_users/registrations',
+        sessions: 'admin_users/sessions'
+      }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "toppages#index"
   get "detail", to: "toppages#detail"
