@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle/*
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -29,5 +30,3 @@
 /config/cloudinary.yml
 # cloudinary's environment variable
 /.env
-
-/public/uploads/tmp/*
