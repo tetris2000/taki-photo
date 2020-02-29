@@ -18,7 +18,7 @@
 【開発環境】
 プログラミング言語：Ruby
 フレームワーク：Ruby on Rails
-IDE：Cloud9
+IDE：VSCode
 バージョン管理：Git、GitHub
 PaaS：Heroku
 データベース：［開発］MySQL、［本番］PostgreSQL
