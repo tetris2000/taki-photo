@@ -70,7 +70,7 @@ gem 'jquery-rails'
 gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 
 gem 'cloudinary'
-gem 'carrierwave', '~> 1.3.1'
+gem 'carrierwave', '~> 2.1.1'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
