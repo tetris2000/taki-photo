@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   def create
     pst = Post.find(params[:post_id])
     current_user.like(pst)
-    flash[:success] = "投稿をお気に入りしました！"
+    flash[:success] = "投稿をお気に入りにしました！"
     redirect_back(fallback_location: root_url)
   end
 
